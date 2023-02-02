@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Currency API</title>
+
 </head>
 <body>
   <h1>Currency API</h1>
