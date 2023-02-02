@@ -12,7 +12,9 @@
     <li>The user can create a currency pair</li>
     <li>The user can transfer currency from one pair to another (only currencies that are in the system, otherwise an error must be thrown).</li>
   </ul>
-  <p><strong>Tools used:</strong> Go, PostgreSQL, Fiber</p>
+  <p>CurrencyAPI is a simple exchange rate API service built with Go, using PostgreSQL as a database and Fiber as a http server framework. </p>
+<p>Every exchange rate is retrieved from <a href="https://openexchangerates.org/">openexchangerates.org</a> and updated periodically with a worker running in the background. </p>
+  
   <p></p>
   <p>At initialization, a worker (goroutine) must be launched, which must run once in N time ticks (for example, once an hour, etc.), go through all the records in the table and update their ratios (taken from the internet. You can parse the page, you can find the API. The second option is better).</p>
   <p>PostgreSQL should be used as the database.</p>
