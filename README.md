@@ -10,7 +10,6 @@
 <h4>
   <h2>Task</h2>
   <p>Implement a currency exchange service API</p>
-  <p>CurrencyAPI is a simple exchange rate API service built with Go, using PostgreSQL as a database and Fiber as a http server framework. </p>
   
   <h2>Requirements</h2>
   <ul>
