@@ -46,7 +46,9 @@
     <li>
       <h3>Converting a value from one currency to another</h3>
       <p>PUT /api/currency</p>
+      ```json
       <p>{ "currencyFrom": "USD", "currencyTo": "RUB", "value": 1 }</p>
+      ```
     </li>
     <li>
       <h3>Aggregation of added currency pairs</h3>
