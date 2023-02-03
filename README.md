@@ -1,49 +1,6 @@
 <!DOCTYPE html>
 <html>
-<style>
-	/*
-		body {
-			font-family: Arial, sans-serif;
-			margin: 0;
-			padding: 0;
-			background-color: #f2f2f2;
-		}
-    	.container {
-		max-width: 800px;
-		margin: 0 auto;
-		background-color: white;
-		padding: 20px;
-		text-align: center;
-		box-shadow: 0 0 10px #ddd;
-	}
 
-	h1 {
-		margin-top: 0;
-		margin-bottom: 20px;
-		color: #333;
-	}
-
-	p {
-		margin-bottom: 20px;
-		color: #333;
-		line-height: 1.5;
-	}
-
-	pre {
-		background-color: #f7f7f7;
-		padding: 10px;
-		border-radius: 5px;
-		margin-bottom: 20px;
-	}
-
-	.note {
-		background-color: #fcf8e3;
-		border-left: 5px solid #faebcc;
-		padding: 10px;
-		margin-bottom: 20px;
-	}
-	*/
-</style>
 <head>
   <title>Currency API Guide</title>
 </head>
