@@ -24,6 +24,8 @@ func main() {
 	app.Use(Middleware)
 	setupRoutes(app, database.DB)
 
+	go currency.UpdateCurrencyData(database.DB)
+
 	err := app.Listen(":3000")
 	if err != nil {
 		return
@@ -41,7 +43,7 @@ func Middleware(c *fiber.Ctx) error {
 }
 func initDatabase() {
 	var err error
-	database.DB, err = sqlx.Connect("postgres", "")
+	database.DB, err = sqlx.Connect("postgres", "user=root password=qwerty dbname=simple_bank sslmode=disable")
 	if err != nil {
 		log.Panicf("Panic to connect to database: %v", err)
 		return

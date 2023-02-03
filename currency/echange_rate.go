@@ -13,7 +13,7 @@ type ExchangeRates struct {
 	Rates map[string]float64 `json:"rates"`
 }
 
-func getRate(c Currency) float64 {
+func GetRate(c Currency) float64 {
 	resp, err := http.Get("https://openexchangerates.org/api/latest.json?app_id=922b16e1a6b54d13a7c3dda92baf95d1")
 	if err != nil {
 		panic(err)
