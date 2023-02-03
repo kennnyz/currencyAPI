@@ -5,8 +5,14 @@
 </head>
 <body>
   <h1>Currency API</h1>
+
   <p>CurrencyAPI is a simple exchange rate API service built with Go, using PostgreSQL as a database and Fiber as a http server framework. </p>
 <p>Every exchange rate is retrieved from <a href="https://openexchangerates.org/">openexchangerates.org</a> and updated periodically with a worker running in the background. </p>
+<p>To run the database, use the "docker" make command which will run a PostgreSQL container.</p>
+<p>To create the database, use the "createdb" make command.</p>
+<p>To delete the database, use the "dropdb" make command.</p>
+<p>Use migrations with the "migratedown" and "migrateup" make commands to manage changes to the database schema.</p>
+<p>Thank you to all the people who have helped with this project and a special shout-out to <a href="https://github.com/baibikov">https://github.com/baibikov</a> for giving this task to his brothers!</p>
 <h4>
   <h2>Task</h2>
   <p>Implement a currency exchange service API</p>
