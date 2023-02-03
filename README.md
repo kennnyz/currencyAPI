@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Currency API Guide</title>
-	<style>
+<style>
 		body {
 			font-family: Arial, sans-serif;
 			margin: 0;
@@ -44,7 +42,8 @@
 		margin-bottom: 20px;
 	}
 </style>
-
+<head>
+  <title>Currency API Guide</title>
 </head>
 <body>
   <h1>Currency API</h1>
@@ -68,13 +67,13 @@
 <h4>
   <h2>Task</h2>
   <p>Implement a currency exchange service API</p>
-  
-  <h2>Requirements</h2>
+
+<h2>Requirements</h2>
   <ul>
     <li>The user can create a currency pair</li>
     <li>The user can transfer currency from one pair to another (only currencies that are in the system, otherwise an error must be thrown).</li>
   </ul>
-  
+
   <p></p>
   <p>At initialization, a worker (goroutine) must be launched, which must run once in N time ticks (for example, once an hour, etc.), go through all the records in the table and update their ratios (taken from the internet. You can parse the page, you can find the API. The second option is better).</p>
   <p>PostgreSQL should be used as the database.</p>
@@ -114,6 +113,7 @@
       <p>GET /api/currency</p>
       <p>[{ "currencyFrom": "USD", "currencyTo": "RUB" }, ….]</p>
     </li>
-    </ol></h4>
+  </ol></h4>
+    
 </body>
 </html>
