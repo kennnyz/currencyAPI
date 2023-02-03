@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <style>
+	/*
 		body {
 			font-family: Arial, sans-serif;
 			margin: 0;
@@ -41,6 +42,7 @@
 		padding: 10px;
 		margin-bottom: 20px;
 	}
+	*/
 </style>
 <head>
   <title>Currency API Guide</title>
