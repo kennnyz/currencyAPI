@@ -22,7 +22,7 @@ func main() {
 	}(database.DB)
 
 	app.Use(Middleware)
-	setupRoutes(app)
+	setupRoutes(app, database.DB)
 
 	err := app.Listen(":3000")
 	if err != nil {
@@ -41,15 +41,15 @@ func Middleware(c *fiber.Ctx) error {
 }
 func initDatabase() {
 	var err error
-	database.DB, err = sqlx.Connect("postgres", "")
+	database.DB, err = sqlx.Connect("postgres", "user=root password=qwerty dbname=simple_bank sslmode=disable")
 	if err != nil {
 		log.Panicf("Panic to connect to database: %v", err)
 		return
 	}
 	fmt.Println("Connected to database")
 }
-func setupRoutes(app *fiber.App) {
+func setupRoutes(app *fiber.App, db *sqlx.DB) {
 	app.Get("/api/currency", currency.GetCurrency)
-	app.Post("/api/currency", currency.PostCurrency)
+	app.Post("/api/currency", currency.CreateCurrency(db))
 	app.Put("/api/currency", currency.PutCurrency)
 }
