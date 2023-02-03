@@ -114,6 +114,6 @@
       <p>GET /api/currency</p>
       <p>[{ "currencyFrom": "USD", "currencyTo": "RUB" }, ….]</p>
     </li>
-  </ol>
+    </ol></h4>
 </body>
 </html>
