@@ -47,7 +47,6 @@ func CreateCurrency(db *sqlx.DB) func(c *fiber.Ctx) error {
 // Получение всех записей из БД
 
 func GetCurrency(db *sqlx.DB) func(c *fiber.Ctx) error {
-
 	return func(c *fiber.Ctx) error {
 		rows, err := db.Query("SELECT * FROM operations")
 		if err != nil {
@@ -79,8 +78,29 @@ func GetCurrency(db *sqlx.DB) func(c *fiber.Ctx) error {
 
 }
 
-//Перевод валюты в другую валюту
+//Обновление записи в БД
 
-func PutCurrency(c *fiber.Ctx) error {
-	return c.SendString("Агрегация добавленных валютных пар")
+func PutCurrency(db *sqlx.DB) func(c *fiber.Ctx) error {
+	return func(c *fiber.Ctx) error {
+		var updateData Currency
+		err := c.BodyParser(&updateData)
+		if err != nil {
+			fmt.Println("Error parsing the request body:", err)
+			c.SendStatus(400)
+			return err
+		}
+
+		updateData.ExchangeRate = getRate(updateData)
+		updateData.UpdatedAt = time.Now().Format("2006-01-02 15:04:05")
+		query := "UPDATE operations SET exchange_rate = $1 WHERE currency_from = $2 AND currency_to = $3"
+		_, err = db.Exec(query, updateData.ExchangeRate, updateData.CurrencyFrom, updateData.CurrencyTo)
+		if err != nil {
+			fmt.Println("Error executing the update query:", err)
+			c.SendStatus(500)
+			return err
+		}
+
+		return c.SendString("Exchange rate updated successfully")
+
+	}
 }
