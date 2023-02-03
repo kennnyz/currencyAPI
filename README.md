@@ -21,6 +21,8 @@
   <p>At initialization, a worker (goroutine) must be launched, which must run once in N time ticks (for example, once an hour, etc.), go through all the records in the table and update their ratios (taken from the internet. You can parse the page, you can find the API. The second option is better).</p>
   <p>PostgreSQL should be used as the database.</p>
   <p>The table should look like this:</p>
+  ![image](https://user-images.githubusercontent.com/80615643/216640477-76b2f241-244f-4330-bea8-7d501d62ab9a.png)
+
   <table>
     <tr>
       <th>currency_from</th>
