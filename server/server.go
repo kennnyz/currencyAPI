@@ -49,7 +49,7 @@ func initDatabase() {
 	fmt.Println("Connected to database")
 }
 func setupRoutes(app *fiber.App, db *sqlx.DB) {
-	app.Get("/api/currency", currency.GetCurrency)
+	app.Get("/api/currency", currency.GetCurrency(db))
 	app.Post("/api/currency", currency.CreateCurrency(db))
 	app.Put("/api/currency", currency.PutCurrency)
 }

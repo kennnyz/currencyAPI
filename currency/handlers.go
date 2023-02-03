@@ -46,9 +46,37 @@ func CreateCurrency(db *sqlx.DB) func(c *fiber.Ctx) error {
 
 // Получение всех записей из БД
 
-func GetCurrency(c *fiber.Ctx) error {
+func GetCurrency(db *sqlx.DB) func(c *fiber.Ctx) error {
 
-	return c.SendString("Getting currency ")
+	return func(c *fiber.Ctx) error {
+		rows, err := db.Query("SELECT * FROM operations")
+		if err != nil {
+			fmt.Println("Error querying the database:", err)
+			return err
+		}
+		defer rows.Close()
+
+		var currencies []Currency
+		for rows.Next() {
+			var currency Currency
+			err := rows.Scan(&currency.CurrencyFrom, &currency.CurrencyTo, &currency.ExchangeRate, &currency.UpdatedAt)
+			if err != nil {
+				fmt.Println("Error scanning the rows:", err)
+				c.SendStatus(500)
+				return err
+			}
+			currencies = append(currencies, currency)
+		}
+		currenciesJSON, err := json.Marshal(currencies)
+		if err != nil {
+			fmt.Println("Error marshalling the currencies:", err)
+			c.SendStatus(500)
+			return err
+		}
+		c.Send(currenciesJSON)
+		return nil
+	}
+
 }
 
 //Перевод валюты в другую валюту
